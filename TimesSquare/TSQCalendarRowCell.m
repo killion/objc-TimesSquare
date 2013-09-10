@@ -123,8 +123,7 @@
         [self.notThisMonthButtons[index] setTitle:title forState:UIControlStateNormal];
         [self.notThisMonthButtons[index] setAccessibilityLabel:accessibilityLabel];
         
-        NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];
-
+        NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];        
         [self.notThisMonthButtons[index] setHidden:YES];
         [self.dayButtons[index] setHidden:NO];
         
@@ -141,6 +140,8 @@
             }
             UIButton *button = self.dayButtons[index];
             button.enabled = ![self.calendarView.delegate respondsToSelector:@selector(calendarView:shouldSelectDate:)] || [self.calendarView.delegate calendarView:self.calendarView shouldSelectDate:date];
+
+            [self willDisplayButton:button forDate:date];            
         }
 
         date = [self.calendar dateByAddingComponents:offset toDate:date options:0];
@@ -296,6 +297,11 @@
         }
     }
     return indexOfButtonForDate;
+}
+
+- (void)willDisplayButton:(UIButton *)button forDate:(NSDate *)date
+{
+    // Default implementation does nothing
 }
 
 @end

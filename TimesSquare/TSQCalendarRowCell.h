@@ -81,4 +81,6 @@
  */
 - (void)deselectColumnForDate:(NSDate *)date;
 
+- (void)willDisplayButton:(UIButton *)button forDate:(NSDate *)date;
+
 @end
