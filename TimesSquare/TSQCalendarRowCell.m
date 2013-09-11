@@ -52,6 +52,7 @@
     [button setTitleColor:[self.textColor colorWithAlphaComponent:0.5f] forState:UIControlStateDisabled];
     [button setTitleShadowColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button setBackgroundImage:nil forState:UIControlStateNormal];
+    button.accessibilityTraits = UIAccessibilityTraitButton;
 }
 
 - (void)configureSelectedButton:(UIButton *)button;
@@ -61,6 +62,7 @@
     [button setBackgroundImage:[self selectedBackgroundImage] forState:UIControlStateNormal];
     [button setTitleShadowColor:[UIColor colorWithWhite:0.0f alpha:0.75f] forState:UIControlStateNormal];
     button.titleLabel.shadowOffset = CGSizeMake(0.0f, -1.0f / [UIScreen mainScreen].scale);
+    button.accessibilityTraits = UIAccessibilityTraitButton | UIAccessibilityTraitSelected;
 }
 
 - (void)configureTodayButton:(UIButton *)button;
