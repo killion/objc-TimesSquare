@@ -12,9 +12,6 @@
 
 
 @interface TSQCalendarRowCell ()
-{
-    NSUInteger buttonStates[7];
-}
 
 @property (nonatomic, assign) NSInteger indexOfTodayButton;
 @property (nonatomic, assign) NSInteger indexOfSelectedButton;

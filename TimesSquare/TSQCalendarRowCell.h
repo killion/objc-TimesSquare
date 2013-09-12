@@ -14,6 +14,9 @@
  Each of the seven columns can represent a day that's in this month, a day that's not in this month, a selected day, today, or an unselected day. The cell uses several images placed strategically to achieve the effect.
  */
 @interface TSQCalendarRowCell : TSQCalendarCell
+{
+    NSUInteger buttonStates[7];
+}
 
 /** @name Images */
 
