@@ -25,6 +25,8 @@
 @property (nonatomic, strong, readwrite) NSArray *dayButtons;
 @property (nonatomic, strong, readwrite) NSArray *notThisMonthButtons;
 
+@property (nonatomic, strong) UIColor *notThisMonthBackgroundImagePatternColor;
+
 @end
 
 
@@ -34,6 +36,7 @@
 {
     self = [super initWithCalendar:calendar reuseIdentifier:reuseIdentifier];
     if (!self) {
+        self.notThisMonthBackgroundImagePatternColor = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
         return nil;
     }
     
@@ -93,9 +96,8 @@
         [self configureButton:button];
 
         button.enabled = NO;
-        UIColor *backgroundPattern = [UIColor colorWithPatternImage:[self notThisMonthBackgroundImage]];
-        button.backgroundColor = backgroundPattern;
-        button.titleLabel.backgroundColor = backgroundPattern;
+        button.backgroundColor = self.notThisMonthBackgroundImagePatternColor;
+        button.titleLabel.backgroundColor = [UIColor clearColor];
     }
     self.notThisMonthButtons = notThisMonthButtons;
 }
