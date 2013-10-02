@@ -131,6 +131,7 @@
 
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated atScrollPosition:(UITableViewScrollPosition)scrollPosition;
 {
+    if ([date timeIntervalSinceDate:self.firstDate] < 0) return;
     NSIndexPath *path = [self indexPathForRowAtDate:date];
     if (path) {
         [self.tableView scrollToRowAtIndexPath:path atScrollPosition:scrollPosition animated:animated];
