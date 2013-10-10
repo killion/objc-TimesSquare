@@ -285,7 +285,7 @@
 
 #pragma mark - Columns
 
-- (NSInteger *)indexOfColumnForDate:(NSDate *)date;
+- (NSInteger)indexOfColumnForDate:(NSDate *)date;
 {
     NSInteger indexOfButtonForDate = -1;
     if (date) {
