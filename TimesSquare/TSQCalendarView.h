@@ -129,6 +129,11 @@ typedef enum {
  */
 @property (nonatomic, strong) Class rowCellClass;
 
+/**
+ Returns `YES` if the calendar view is in the process of scrolling in due to a drag or is in the process of decelerating.
+ */
+@property (nonatomic, readonly) BOOL isScrolling;
+
 /** Scrolls the receiver until the specified date month is completely visible at the top of the view.
 
  @param date A date that identifies the month that will be visible.

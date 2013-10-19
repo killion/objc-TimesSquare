@@ -124,6 +124,11 @@
     _lastDate = [self.calendar dateByAddingComponents:offsetComponents toDate:firstOfMonth options:0];
 }
 
+- (BOOL)isScrolling
+{
+    return self.tableView.isDragging || self.tableView.isDecelerating;
+}
+
 - (void)scrollToDate:(NSDate *)date animated:(BOOL)animated;
 {
     [self scrollToDate:date animated:animated atScrollPosition:UITableViewScrollPositionTop];
