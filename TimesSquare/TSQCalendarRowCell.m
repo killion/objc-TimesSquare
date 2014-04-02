@@ -122,6 +122,7 @@
         [self.dayButtons[index] setTitle:title forState:UIControlStateNormal];
         [self.dayButtons[index] setAccessibilityLabel:accessibilityLabel];
         [self.notThisMonthButtons[index] setTitle:title forState:UIControlStateNormal];
+        [self.notThisMonthButtons[index] setTitle:title forState:UIControlStateDisabled];
         [self.notThisMonthButtons[index] setAccessibilityLabel:accessibilityLabel];
         
         NSDateComponents *thisDateComponents = [self.calendar components:NSDayCalendarUnit|NSMonthCalendarUnit|NSYearCalendarUnit fromDate:date];        
@@ -232,9 +233,14 @@
 {
     if (!date) return;
     
-    NSInteger indexOfButtonForDate = [self indexOfColumnForDate:date];
-    if (indexOfButtonForDate >= 0) {
-        buttonStates[indexOfButtonForDate] = 1;
+    if (newIndexOfSelectedButton >= 0) {
+        self.selectedButton.hidden = NO;
+        NSString *newTitle = [self.dayButtons[newIndexOfSelectedButton] currentTitle];
+        [self.selectedButton setTitle:newTitle forState:UIControlStateNormal];
+        [self.selectedButton setTitle:newTitle forState:UIControlStateDisabled];
+        [self.selectedButton setAccessibilityLabel:[self.dayButtons[newIndexOfSelectedButton] accessibilityLabel]];
+    } else {
+        self.selectedButton.hidden = YES;
     }
     
     [self setNeedsLayout];
